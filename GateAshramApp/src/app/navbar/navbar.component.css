@@ -1,0 +1,12 @@
+.dropdown {
+    position: static;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.dropdown-item {
+    display: inline;
+}
+

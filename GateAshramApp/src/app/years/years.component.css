@@ -1,0 +1,39 @@
+.input-group-text input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+.input-group-text {
+    background-color: white;
+    border: none;
+}
+
+.input-group-text label {
+    display: inline-block;
+    background-color: #fff;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 30px;
+}
+
+.input-group-text input[type="radio"]:checked + label {
+    background-color:#a9b5fb;
+    border-color: #4468cc;
+}
+
+#yearsForm {
+    min-width: 100%;
+}
+
+#yearsForm .col-sm-2 {
+    float: left;
+}
+
+.center-screen {
+    position: relative;
+    top: 9rem;
+}
+

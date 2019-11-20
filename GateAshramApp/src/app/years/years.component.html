@@ -1,0 +1,25 @@
+<div class="container mb-3 my-3">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2><u>GATE YEARS</u></h2>
+        </div>
+    </div>
+    <div class="row center-screen">
+        <form id="yearsForm" action="">
+            <div *ngFor="let year of years" class="input-group col-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="radio" id="{{year}}" name="year">
+                        <label for="{{year}}">{{"GATE " + year}}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-success btn-md">Take Test</button>
+            <button class="btn btn-success btn-md btn-practice">Practice</button>
+        </div>
+    </div>
+</div>

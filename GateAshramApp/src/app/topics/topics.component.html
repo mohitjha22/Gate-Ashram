@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2><u>TOPICS</u></h2>
+        </div>
+    </div>
+    <div class="row mb-3 my-3">
+        <form id="topic-form" action="">
+            <div *ngFor="let topic of topics" class="input-group mb-3 col-sm-6">
+                <div class="input-group-prepend">
+                    <div class="input-group-text text-center">
+                        <input type="checkbox" name="{{topic.topic}}">&nbsp;&nbsp;&nbsp;
+                        <label class="form-check-label">{{ topic.topic }}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-success btn-md">Take Test</button>
+            <button class="btn btn-success btn-md btn-practice">Practice</button>
+        </div>
+    </div>
+</div>

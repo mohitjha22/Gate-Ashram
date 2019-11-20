@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2><u> SUBJECTS </u></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let subject of subjects" class="col-sm-12 col-md-4 m-bottom">
+            <div class="card" style="width: 18rem;">
+                <img src="../../assets/MATHEMATICS.png" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{subject.subject}}</h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p> -->
+                    <a routerLink="/practice/subject/{{subject.subject}}" class="btn btn-primary">Practice</a>
+                    <a routerLink="/topics/{{subject.subject}}" class="btn btn-primary btn-topics">Topics</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
