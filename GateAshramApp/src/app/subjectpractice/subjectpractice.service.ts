@@ -11,7 +11,7 @@ export class SubjectpracticeService {
     constructor(private http: HttpClient) {}
 
     getSubjectquestions(subject): Observable<ISubjectpractice[]> {
-        this._url = "http://localhost:3000/" + subject + "/practice";
+        this._url = "http://localhost:3000/practice/" + subject ;
         return this.http.get<ISubjectpractice[]>(this._url);
     }
     

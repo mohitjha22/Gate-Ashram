@@ -14,7 +14,7 @@ export class SubjectsService {
 
     getSubjects(branch): Observable<ISubjects[]> {
 
-        this._url = "http://localhost:3000/"+ branch +"/subjects";
+        this._url = "http://localhost:3000/subjects/"+ branch ;
         return this.http.get<ISubjects[]>(this._url);
     }
     

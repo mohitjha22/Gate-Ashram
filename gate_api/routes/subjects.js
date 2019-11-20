@@ -8,15 +8,22 @@ const branchSchema = new mongoose.Schema({
 });
 
 //to get the subjects of a particular branch
-router.get('/',function(req,res){
+router.get('/:branch',function(req,res){
 
 	//async-await fuction
 	async function getSubjects(){
-		const branch="CSE";
-		const branch1=req.params.branch;
+		//const branch="CSE";
+		const branch=req.params.branch;
+		//console.log(branch);
 
+		//try-catch to see if the model is already made.
+		let Query;
+		try {
+			Query = mongoose.model(branch);
+		} catch (error) {
+			Query = mongoose.model(branch,branchSchema,branch);
+		}
 		//querying the db
-		const Query = mongoose.model(branch,branchSchema,branch);
 		const info= await Query.find();
 
 		res.send(info);

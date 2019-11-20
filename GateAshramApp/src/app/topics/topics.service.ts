@@ -11,7 +11,7 @@ export class TopicsService {
     constructor(private http: HttpClient) {}
 
     getTopics(subject): Observable<ITopics[]> {
-        this._url = "http://localhost:3000/" + subject + "/topics";
+        this._url = "http://localhost:3000/topics/" + subject ;
         return this.http.get<ITopics[]>(this._url);
     }
     
