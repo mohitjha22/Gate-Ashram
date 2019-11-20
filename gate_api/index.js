@@ -97,7 +97,7 @@ app.get('/:subject/topics',function(req,res){
 
 	getTopics();
 });
-
+// git initialized
 //to get the practice questions of a particular topic of a subject of a branch
 app.get('/:branch/subjects/:subject/:topic/practice',function(req,res){
 
