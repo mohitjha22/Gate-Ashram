@@ -80,12 +80,20 @@ router.get('/:branch/:year',function(req,res){
 
 	const branch = req.params.branch;
 	const year = req.params.year;
+	//const year1="GATE-"+year;
 
 	//async-await function
 	async function getPracticeQuestionsYearwise(){
+		
+		//try-catch to see if the model is already made.
+		let Query;
+		try {
+			Query = mongoose.model(branch);
+		} catch (error) {
+			Query = mongoose.model(branch,branchSchema,branch);
+		}
 
 		//querying the db to get all subjects of the given branch
-		const Query = mongoose.model(branch,branchSchema,branch);
 		const subjects= await Query.find();
 
 		const info=[];
