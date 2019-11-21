@@ -12,7 +12,7 @@ router.get('/:branch',function(req,res){
 
 	//async-await fuction
 	async function getSubjects(){
-		//const branch="CSE";
+
 		const branch=req.params.branch;
 		//console.log(branch);
 

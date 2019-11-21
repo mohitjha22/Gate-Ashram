@@ -10,11 +10,13 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { SubjectsService } from './subjects/subjects.service';
 import { TopicsComponent } from './topics/topics.component';
 import { TopicsService } from './topics/topics.service';
+import { YearsComponent } from './years/years.component';
 import { SubjectpracticeComponent } from './subjectpractice/subjectpractice.component';
 import { SubjectpracticeService } from './subjectpractice/subjectpractice.service';
 import { TopicpracticeComponent } from './topicpractice/topicpractice.component';
 import { TopicpracticeService } from './topicpractice/topicpractice.service';
-import { YearsComponent } from './years/years.component';
+import { YearpracticeComponent } from './yearpractice/yearpractice.component';
+import { YearpracticeService } from './yearpractice/yearpractice.service';
 
 @NgModule({
   declarations: [
@@ -23,16 +25,17 @@ import { YearsComponent } from './years/years.component';
     FooterComponent,
     SubjectsComponent,
     TopicsComponent,
+    YearsComponent,
     SubjectpracticeComponent,
     TopicpracticeComponent,
-    YearsComponent
+    YearpracticeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService],
+  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

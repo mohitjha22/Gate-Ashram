@@ -22,41 +22,39 @@ const branchSchema = new mongoose.Schema({
 });
 
 //to get the practice questions of a particular topic of a subject of a branch
-router.get('/:subject/:topic',function(req,res){
+// router.get('/:subject/:topic',function(req,res){
 
-	const branch = req.params.branch;
-	const subject = req.params.subject;
-	const topic = req.params.topic;
+// 	//async-await function
+// 	async function getPracticeQuestionsTopicwise(){
 
-	//async-await function
-	async function getPracticeQuestionsTopicwise(){
+// 		const subject = req.params.subject;
+// 		const topic = req.params.topic;
 
-		//try-catch to see if the model is already made.
-		let Sub;
-		try {
-			Sub = mongoose.model(subject);
-		} catch (error) {
-			Sub = mongoose.model(subject,subjectSchema,subject);
-		}
-		//to query db.
-		const info= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
+// 		//try-catch to see if the model is already made.
+// 		let Sub;
+// 		try {
+// 			Sub = mongoose.model(subject);
+// 		} catch (error) {
+// 			Sub = mongoose.model(subject,subjectSchema,subject);
+// 		}
+// 		//to query db.
+// 		const info= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
 		
 
-		//console.log(info);
-		res.send(info);
-	}
+// 		//console.log(info);
+// 		res.send(info);
+// 	}
 
-	getPracticeQuestionsTopicwise();
-});
+// 	getPracticeQuestionsTopicwise();
+// });
 
 //to get all the practice questions of all topics of a subject of a branch
 router.get('/:subject',function(req,res){
 
-	const branch = req.params.branch;
-	const subject = req.params.subject;
-
 	//async-await function
 	async function getPracticeQuestionsSubjectwise(){
+		
+		const subject = req.params.subject;
 
 		//try-catch to see if the model is already made.
 		let Sub;
@@ -78,12 +76,11 @@ router.get('/:subject',function(req,res){
 //to get all the practice questions of a year of a branch
 router.get('/:branch/:year',function(req,res){
 
-	const branch = req.params.branch;
-	const year = req.params.year;
-	//const year1="GATE-"+year;
-
 	//async-await function
 	async function getPracticeQuestionsYearwise(){
+
+		const branch = req.params.branch;
+		const year = req.params.year;
 		
 		//try-catch to see if the model is already made.
 		let Query;
