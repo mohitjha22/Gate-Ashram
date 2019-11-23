@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
 
 @Component({
   selector: 'app-years',
@@ -9,18 +9,26 @@ import { ActivatedRoute } from '@angular/router';
 export class YearsComponent implements OnInit {
 
   public years = [
-    "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
+    "1990","1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
     "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
     "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014",
     "2015", "2016", "2017", "2018"
   ];
 
   public branch;
+  public selectedYear;
 
-  constructor(private route : ActivatedRoute) { }
+  constructor(private route : ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.branch = this.route.snapshot.params.branch;
+    this.selectedYear="1989";
   }
+
+  onClickSubmit(data) {
+    this.selectedYear=data.year;
+    this.router.navigateByUrl("/practice/"+this.branch+"/"+this.selectedYear);
+    //alert("Entered Email id : " + this.selectedYear);
+ }
 
 }

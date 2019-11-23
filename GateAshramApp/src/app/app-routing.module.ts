@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TopicsComponent } from './topics/topics.component';
 import { YearsComponent } from './years/years.component';

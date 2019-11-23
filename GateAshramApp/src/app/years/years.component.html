@@ -5,21 +5,23 @@
         </div>
     </div>
     <div class="row center-screen">
-        <form id="yearsForm" action="">
-            <div *ngFor="let year of years" class="input-group col-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <input type="radio" id="{{year}}" name="year">
-                        <label for="{{year}}">{{"GATE " + year}}</label>
+        <form id="yearsForm" #yearsForm = "ngForm" (ngSubmit) = "onClickSubmit(yearsForm.value)">
+            <div class="row">
+                <div *ngFor="let year of years" class="input-group col-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" id="{{year}}" name="year" value="{{year}}" ngModel>
+                                <label for="{{year}}">{{"GATE " + year}}</label>
+                            </div>
+                        </div>
                     </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-success btn-md btn-practice">Practice</button>
+                    <button class="btn btn-success btn-md">Take Test</button>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-success btn-md">Take Test</button>
-            <button routerLink="/practice/{{branch}}/{{year}}" class="btn btn-success btn-md btn-practice">Practice</button>
-        </div>
     </div>
 </div>
