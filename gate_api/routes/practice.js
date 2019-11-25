@@ -121,4 +121,10 @@ router.get('/:branch/:year',function(req,res){
 	getPracticeQuestionsYearwise();
 });
 
+
+router.post('/', (req, res) => {
+	console.log(req);
+	res.send("Ok");
+})
+
 module.exports=router;

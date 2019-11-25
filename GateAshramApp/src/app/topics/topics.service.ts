@@ -6,13 +6,19 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TopicsService {
 
-    private _url: string;
+    private get_url: string;
+    private submit_url : string;
 
     constructor(private http: HttpClient) {}
 
     getTopics(subject): Observable<ITopics[]> {
-        this._url = "http://localhost:3000/topics/" + subject ;
-        return this.http.get<ITopics[]>(this._url);
+        this.get_url = "http://localhost:3000/topics/" + subject ;
+        return this.http.get<ITopics[]>(this.get_url);
+    }
+
+    submitTopics(formData): Observable<any> {
+        this.submit_url = "http://localhost:3000/practice";
+        return this.http.post<any>(this.submit_url, formData);
     }
     
 }
