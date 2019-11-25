@@ -22,31 +22,45 @@ const branchSchema = new mongoose.Schema({
 });
 
 //to get the practice questions of a particular topic of a subject of a branch
-// router.get('/:subject/:topic',function(req,res){
+router.post('/subject/topics',function(req,res){
 
-// 	//async-await function
-// 	async function getPracticeQuestionsTopicwise(){
+	//async-await function
+	async function getquestions(){
 
-// 		const subject = req.params.subject;
-// 		const topic = req.params.topic;
+		const subject = req.body[0].subject;
+ 		const topics = req.body[1].topics;
+ 		//console.log(req.body[0].subject);
+		//console.log(req.body[1]);
 
-// 		//try-catch to see if the model is already made.
-// 		let Sub;
-// 		try {
-// 			Sub = mongoose.model(subject);
-// 		} catch (error) {
-// 			Sub = mongoose.model(subject,subjectSchema,subject);
-// 		}
-// 		//to query db.
-// 		const info= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
-		
+ 		//try-catch to see if the model is already made.
+ 		let Sub;
+ 		try {
+ 			Sub = mongoose.model(subject);
+ 		} catch (error) {
+ 			Sub = mongoose.model(subject,subjectSchema,subject);
+ 		}
 
-// 		//console.log(info);
-// 		res.send(info);
-// 	}
+ 		const info=[];
 
-// 	getPracticeQuestionsTopicwise();
-// });
+ 		//collecting all questions of the given topics from a subject
+ 		for(let i=0;i<topics.length;i++){
+ 			const topic=topics[i];
+ 			
+ 			//to query db.
+			const questions= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
+
+			for(let j=0;j<questions.length;j++){
+				info.push(questions[j]);
+			}
+
+ 		}
+
+		//console.log(info);
+		res.send(info);
+	}
+	getquestions();
+});
+
 
 //to get all the practice questions of all topics of a subject of a branch
 router.get('/:subject',function(req,res){
@@ -120,11 +134,5 @@ router.get('/:branch/:year',function(req,res){
 
 	getPracticeQuestionsYearwise();
 });
-
-
-router.post('/', (req, res) => {
-	console.log(req);
-	res.send("Ok");
-})
 
 module.exports=router;

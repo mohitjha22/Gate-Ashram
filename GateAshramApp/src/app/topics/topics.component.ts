@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TopicsService } from './topics.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class TopicsComponent implements OnInit {
   public formData;
 
   constructor(
+    private router: Router,
     private _topicsService: TopicsService,
     private route: ActivatedRoute,
     private fb: FormBuilder
@@ -29,7 +30,6 @@ export class TopicsComponent implements OnInit {
       .subscribe((data) => this.topics = data);
 
     this.topicForm = this.fb.group({
-      subject: this.subject,
       topics: this.fb.array([])
     });
   }
@@ -50,10 +50,10 @@ export class TopicsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.topicForm.value));
-    this.formData = this.topicForm.value;
-    this._topicsService.submitTopics(JSON.stringify(this.topicForm.value))
-      .subscribe((data) => console.log("From post", data));
+    this.formData = this.topicForm.value.topics;
+    //console.log(this.formData);
+    this.router.navigate(['/topicpractice', {subject:this.subject,topics:JSON.stringify(this.formData)}]);
+    
   }
 
 }

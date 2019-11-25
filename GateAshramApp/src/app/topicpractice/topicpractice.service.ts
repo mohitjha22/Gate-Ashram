@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TopicpracticeService {
 
-    private _url: string = "http://192.168.43.60:3000/CSE/subjects/DIGITAL LOGIC/Combinational Circuits/practice";
+    private get_url: string;
 
     constructor(private http: HttpClient) {}
-
-    getTopicquestions(): Observable<ITopicpractice[]> {
-
-        return this.http.get<ITopicpractice[]>(this._url);
+    
+    getTopicquestions(subject,topics): Observable<any> {
+        //console.log(topics);
+        this.get_url = "http://localhost:3000/practice/subject/topics";
+        return this.http.post<any>(this.get_url, [{'subject':subject},{'topics':topics}]);
     }
-    
-    
+
 }

@@ -8,21 +8,23 @@
     </div>
     <div class="row mb-3 my-3">
         <form id="topic-form" [formGroup]="topicForm">
-            <div *ngFor="let topic of topics" class="input-group mb-3 col-sm-6">
-                <div class="input-group-prepend">
-                    <div class="input-group-text text-center">
-                        <input type="checkbox" (change)="onChange(topic.topic, $event.target.checked)">&nbsp;&nbsp;&nbsp;
-                        <label class="form-check-label">{{ topic.topic }}</label>
-                    </div>
+            <div class="row">
+                <div *ngFor="let topic of topics" class="input-group mb-3 col-sm-6">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text text-center">
+                                <input type="checkbox" (change)="onChange(topic.topic, $event.target.checked)">&nbsp;&nbsp;&nbsp;
+                                <label class="form-check-label">{{ topic.topic }}</label>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-success btn-md btn-practice"
+                        [(disabled)]="submitDisabled" (click)="onSubmit()">Practice</button>
+                    <button type="submit" class="btn btn-success btn-md" [(disabled)]="submitDisabled">Take Test</button>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-success btn-md">Take Test</button>
-            <button type="submit" class="btn btn-success btn-md btn-practice"
-             [(disabled)]="submitDisabled" (click)="onSubmit()">Practice</button>
-        </div>
     </div>
 </div>

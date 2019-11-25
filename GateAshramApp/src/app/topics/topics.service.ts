@@ -15,10 +15,5 @@ export class TopicsService {
         this.get_url = "http://localhost:3000/topics/" + subject ;
         return this.http.get<ITopics[]>(this.get_url);
     }
-
-    submitTopics(formData): Observable<any> {
-        this.submit_url = "http://localhost:3000/practice";
-        return this.http.post<any>(this.submit_url, formData);
-    }
     
 }
