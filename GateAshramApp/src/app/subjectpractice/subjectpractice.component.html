@@ -1,3 +1,23 @@
-<ul *ngFor = "let question of questions">
-    <li> {{ question.Question }} </li>
-</ul>
+<div class="container">
+    <div *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: p }" class="question-container">
+        <div class="row">
+            <div class="col-sm-12 question">
+                <h5 >Q. {{ question.Question }}</h5>
+                <img class="question-img" src="../../assets/{{subject}}{{question.Img}}.jpg" alt="">
+                <ul id="{{question._id}}" class="options-list">
+                    <li (click)="checkAnswer($event)"><span class="option">A </span>{{ question.Option_A }}</li>
+                    <li (click)="checkAnswer($event)"><span class="option">B </span>{{ question.Option_B }}</li>
+                    <li (click)="checkAnswer($event)"><span class="option">C </span>{{ question.Option_C }}</li>
+                    <li (click)="checkAnswer($event)"><span class="option">D </span>{{ question.Option_D }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row explanation">
+            <div class="col-sm-12">
+                <p>Correct Answer : {{ question.Answer }}</p><br>
+                <p>Explanation : {{ question.Explanation }}</p>
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

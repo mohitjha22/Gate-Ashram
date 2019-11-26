@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -37,7 +37,8 @@ import { YearpracticeService } from './yearpractice/yearpractice.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService],
   bootstrap: [AppComponent]

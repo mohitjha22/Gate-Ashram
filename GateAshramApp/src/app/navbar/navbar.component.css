@@ -10,3 +10,6 @@
     display: inline;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    color: #fef7c2;
+}
