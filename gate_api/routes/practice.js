@@ -21,7 +21,7 @@ const branchSchema = new mongoose.Schema({
 	subject:String
 });
 
-//to get the practice questions of a particular topic of a subject of a branch
+//to get the practice questions of selected topics of a subject of a branch
 router.post('/subject/topics',function(req,res){
 
 	//async-await function
