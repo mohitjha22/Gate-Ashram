@@ -1,9 +1,9 @@
 <div class="container">
-    <div *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: p }" class="question-container">
+    <div *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" [attr.data-index]="i" class="question-container">
         <div class="row">
             <div class="col-sm-12 question">
-                <h5 >Q. {{ question.Question }}</h5>
-                <img class="question-img" src="../../assets/{{subject}}{{question.Img}}.jpg" alt="">
+                <h5 >Q{{i+1}}. {{ question.Question }}</h5>
+                <img class="question-img" src="../../assets/{{question.Img}}.jpg" alt="">
                 <ul id="{{question._id}}" class="options-list">
                     <li (click)="checkAnswer($event)"><span class="option">A </span>{{ question.Option_A }}</li>
                     <li (click)="checkAnswer($event)"><span class="option">B </span>{{ question.Option_B }}</li>

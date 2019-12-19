@@ -10,6 +10,7 @@ const home=require('./routes/home');
 const practice=require('./routes/practice');
 const subjects=require('./routes/subjects');
 const topics=require('./routes/topics');
+const test=require('./routes/test');
 
 const app=express();
 
@@ -26,6 +27,7 @@ app.use('/',home);
 app.use('/practice',practice);
 app.use('/subjects',subjects);
 app.use('/topics',topics);
+app.use('/test',test);
 
 //connecting to the db
 mongoose.connect('mongodb+srv://root:root@gateashramcluster-ddwdn.mongodb.net/GateQuestionBank?retryWrites=true&w=majority')
