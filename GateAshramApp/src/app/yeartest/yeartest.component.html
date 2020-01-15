@@ -21,7 +21,7 @@
                 </div>
                 <div class="tab-pane fade" id="nav-cse" role="tabpanel" aria-labelledby="nav-cse-tab"></div>
                 <div id="btn-holder">
-                    <button class="btn btn-default btn-md btn-left">Mark for review & Next</button>
+                    <button class="btn btn-default btn-md btn-left" (click)="markReviewAndNext( current_question[0].id )">Mark for review & Next</button>
                     <button class="btn btn-default btn-md btn-mid" (click)="clearResponse( current_question[0].id )">Clear Response</button>
                     <button class="btn btn-default btn-md btn-right" (click)="saveAndNext( current_question[0].id )" >Save & Next</button>
                 </div>

@@ -20,6 +20,8 @@ import { TopicpracticeService } from './topicpractice/topicpractice.service';
 import { YearpracticeComponent } from './yearpractice/yearpractice.component';
 import { YearpracticeService } from './yearpractice/yearpractice.service';
 import { YeartestComponent } from './yeartest/yeartest.component';
+import { YeartestService } from './yeartest/yeartest.service';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { YeartestComponent } from './yeartest/yeartest.component';
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService],
+  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService, YeartestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
