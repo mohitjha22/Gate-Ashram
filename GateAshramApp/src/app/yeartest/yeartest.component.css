@@ -53,3 +53,28 @@
 .btn-right {
     float: right;
 }
+
+#submit-section {
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+}
+
+#question-state {
+    list-style-type: none;
+}
+
+#question-state li {
+    display: table;
+}
+
+#question-state li p{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#question-nav, #question-state-container,#student-detail,#timer-section {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+

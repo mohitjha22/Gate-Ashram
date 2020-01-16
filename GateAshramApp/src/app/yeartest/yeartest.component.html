@@ -3,43 +3,75 @@
         <div id="section-test" class="col-lg-8">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-aptitude-tab" data-toggle="tab" href="#nav-aptitude" role="tab"
-                        aria-controls="nav-aptitude" aria-selected="true">Computer Science</a>
-                    <a class="nav-item nav-link" id="nav-cse-tab" data-toggle="tab" href="#nav-cse" role="tab"
-                        aria-controls="nav-cse" aria-selected="false">Aptitude</a>
+                    <a class="nav-item nav-link active" id="nav-cse-tab" data-toggle="tab" href="#nav-cse" role="tab"
+                        aria-controls="nav-cse" aria-selected="true">Computer Science</a>
+
+                    <a class="nav-item nav-link" id="nav-aptitude-tab" data-toggle="tab" href="#nav-aptitude" role="tab"
+                        aria-controls="nav-aptitude" aria-selected="false">Aptitude</a>
+
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-aptitude" role="tabpanel" aria-labelledby="nav-aptitude-tab">
+                <div class="tab-pane fade show active" id="nav-cse" role="tabpanel" aria-labelledby="nav-cse-tab">
                     <div id="question-container" *ngFor="let question of current_question">
                         <h3>Q. {{ question.id+1 + question.question.Question }}</h3>
-                        <input id="A" type="radio" name="options" value="{{ question.question.Option_A }}" [checked]=" question.checked_A " (change)="setAnswer($event)">{{ question.question.Option_A }}<br>
-                        <input id="B" type="radio" name="options" value="{{ question.question.Option_B }}" [checked]=" question.checked_B " (change)="setAnswer($event)">{{ question.question.Option_B }}<br>
-                        <input id="C" type="radio" name="options" value="{{ question.question.Option_C }}" [checked]=" question.checked_C " (change)="setAnswer($event)">{{ question.question.Option_C }}<br>
-                        <input id="D" type="radio" name="options" value="{{ question.question.Option_D }}" [checked]=" question.checked_D " (change)="setAnswer($event)">{{ question.question.Option_D }}
+                        <p>{{ "Marks: " + "(" + question.question.Marks + ")" }}</p>
+                        <input id="A" type="radio" name="options" value="{{ question.question.Option_A }}"
+                            [checked]=" question.checked_A "
+                            (change)="setAnswer($event)">{{ question.question.Option_A }}<br>
+                        <input id="B" type="radio" name="options" value="{{ question.question.Option_B }}"
+                            [checked]=" question.checked_B "
+                            (change)="setAnswer($event)">{{ question.question.Option_B }}<br>
+                        <input id="C" type="radio" name="options" value="{{ question.question.Option_C }}"
+                            [checked]=" question.checked_C "
+                            (change)="setAnswer($event)">{{ question.question.Option_C }}<br>
+                        <input id="D" type="radio" name="options" value="{{ question.question.Option_D }}"
+                            [checked]=" question.checked_D "
+                            (change)="setAnswer($event)">{{ question.question.Option_D }}
                     </div>
                 </div>
-                <div class="tab-pane fade" id="nav-cse" role="tabpanel" aria-labelledby="nav-cse-tab"></div>
+                <div class="tab-pane fade" id="nav-aptitude" role="tabpanel" aria-labelledby="nav-aptitude-tab"></div>
                 <div id="btn-holder">
-                    <button class="btn btn-default btn-md btn-left" (click)="markReviewAndNext( current_question[0].id )">Mark for review & Next</button>
-                    <button class="btn btn-default btn-md btn-mid" (click)="clearResponse( current_question[0].id )">Clear Response</button>
-                    <button class="btn btn-default btn-md btn-right" (click)="saveAndNext( current_question[0].id )" >Save & Next</button>
+                    <button class="btn btn-default btn-md btn-left"
+                        (click)="markReviewAndNext( current_question[0].id )">Mark for review & Next</button>
+                    <button class="btn btn-default btn-md btn-mid"
+                        (click)="clearResponse( current_question[0].id )">Clear Response</button>
+                    <button class="btn btn-default btn-md btn-right"
+                        (click)="saveAndNext( current_question[0].id )">Save & Next</button>
                 </div>
             </div>
         </div>
         <div id="section-sidebar" class="col-lg-4">
             <div class="row">
-                <div class="col-lg-12">
-                    Time Remaining : 
+                <div class="col-lg-12" id="timer-section">
+                    <h3>Time Remaining :</h3> <p id="timer"></p>
                 </div>
-                <div class="col-lg-12">
-                    Questions Navigation
+                <div class="col-lg-12" id="student-detail">
+                    <h3>Student Detail:</h3>
+                </div>
+                <div class="col-lg-12" id="question-state-container">
+                    <h3>Question Type:</h3>
+                    <ul id="question-state">
+                        <li><span class="q-number" style="background-color: grey"></span><p>Unvisited</p></li>
+                        <li><span class="q-number" style="background-color: red"></span><p>Unanswered</p></li>
+                        <li><span class="q-number" style="background-color: green"></span><p>Answered</p></li>
+                        <li><span class="q-number" style="background-color: purple"></span><p>Mark for Review</p></li>
+                        <li><span class="q-number" style="background-color: blue"></span><p>Answered and Marked for review</p></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12" id="question-nav">
+                    <h3>Questions Navigation:</h3>
                     <div>
-                        <span class="q-number"  *ngFor="let question of questions; let i = index" id="q{{i+1}}" (click)="changeQuestion(i)">
+                        <span class="q-number" *ngFor="let question of questions; let i = index" id="q{{i+1}}"
+                            (click)="changeQuestion(i)">
                             {{ i+1 }}
                         </span>
                     </div>
                 </div>
+            </div>
+            <div id="submit-section">
+                <button class="btn btn-default btn-md btn-left"
+                    (click)="submitTest(year, saveState, questions.length)">Submit</button>
             </div>
         </div>
     </div>
