@@ -21,6 +21,7 @@ import { YearpracticeComponent } from './yearpractice/yearpractice.component';
 import { YearpracticeService } from './yearpractice/yearpractice.service';
 import { YeartestComponent } from './yeartest/yeartest.component';
 import { YeartestService } from './yeartest/yeartest.service';
+import { ResultComponent } from './result/result.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { YeartestService } from './yeartest/yeartest.service';
     SubjectpracticeComponent,
     TopicpracticeComponent,
     YearpracticeComponent,
-    YeartestComponent
+    YeartestComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

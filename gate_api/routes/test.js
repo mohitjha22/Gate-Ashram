@@ -75,7 +75,7 @@ router.get('/:branch/:year',function(req,res){
 router.get('/:subject',function(req,res){
 
 	//async-await function
-	async function getPracticeQuestionsSubjectwise(){
+	async function getTestQuestionsSubjectwise(){
 		
 		const subject = req.params.subject;
 
@@ -106,7 +106,7 @@ router.get('/:subject',function(req,res){
 		res.send(info);
 	}
 
-	getPracticeQuestionsSubjectwise();
+	getTestQuestionsSubjectwise();
 });
 
 //to get the test questions of selected topics of a subject of a branch
