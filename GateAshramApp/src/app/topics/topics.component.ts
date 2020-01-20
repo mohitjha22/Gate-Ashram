@@ -49,10 +49,16 @@ export class TopicsComponent implements OnInit {
       this.submitDisabled = true;
   }
 
-  onSubmit() {
+  onSubmit1() {
     this.formData = this.topicForm.value.topics;
     //console.log(this.formData);
     this.router.navigate(['/topicpractice', {subject:this.subject,topics:JSON.stringify(this.formData)}]);
+    
+  }
+  onSubmit2() {
+    this.formData = this.topicForm.value.topics;
+    //console.log(this.formData);
+    this.router.navigate(['/topictest', {subject:this.subject,topics:JSON.stringify(this.formData)}]);
     
   }
 

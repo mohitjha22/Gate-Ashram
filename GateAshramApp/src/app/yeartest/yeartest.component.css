@@ -68,7 +68,7 @@
     display: table;
 }
 
-#question-state li p{
+#question-state li p {
     display: table-cell;
     vertical-align: middle;
 }

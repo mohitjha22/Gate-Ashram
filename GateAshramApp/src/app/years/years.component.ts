@@ -15,6 +15,9 @@ export class YearsComponent implements OnInit {
     "2015", "2016", "2017", "2018"
   ];
 
+  public practice="p";
+  public test="t";
+
   public branch;
   public selectedYear;
 
@@ -26,8 +29,15 @@ export class YearsComponent implements OnInit {
   }
 
   onClickSubmit(data) {
+    //console.log(data);
     this.selectedYear=data.year;
-    this.router.navigateByUrl("/practice/"+this.branch+"/"+this.selectedYear);
+    if(data.testType=="Practice"){
+      this.router.navigateByUrl("/practice/"+this.branch+"/"+this.selectedYear);
+    }
+    else if(data.testType=="Test"){
+      this.router.navigateByUrl("/test/"+this.branch+"/"+this.selectedYear);
+    }
+    
     //alert("Entered Email id : " + this.selectedYear);
  }
 

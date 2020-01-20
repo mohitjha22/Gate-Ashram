@@ -15,6 +15,7 @@ export class YeartestComponent implements OnInit {
   public current_question = [];
   public branch;
   public year;
+  public endTimer = 1;
 
   constructor(
     private _yeartestService: YeartestService,
@@ -30,7 +31,7 @@ export class YeartestComponent implements OnInit {
     this._yeartestService.getTestQuestions(this.year, this.branch).
       subscribe((data) => {
         this.questions = data;
-        console.log(data);
+        //console.log(data);
         for (let i = 0; i < this.questions.length; i++) {
           var obj = {
             "id": i,
@@ -56,7 +57,7 @@ export class YeartestComponent implements OnInit {
   startTimer() {
 
     var pres = new Date().getTime();
-    var countDownDate = pres + 15000;
+    var countDownDate = pres + 60000;
 
     var x = setInterval(function () {
 
@@ -71,7 +72,7 @@ export class YeartestComponent implements OnInit {
       document.getElementById("timer").innerHTML = hours + "h "
         + minutes + "m " + seconds + "s ";
 
-      if (distance < 0) {
+      if (distance <= 0 || this.endTimer == 0) {
         clearInterval(x);
         //alert("Test has ended!");
         //callback();
@@ -168,6 +169,8 @@ export class YeartestComponent implements OnInit {
     var score = 0;
     var heading = "Yearwise-" + this.year;
 
+    this.endTimer = 0;
+
     for (let i = 0; i < this.saveState.length; i++) {
       var marks = this.saveState[i].question.Marks;
       var correctAns = this.saveState[i].question.Answer;
@@ -209,7 +212,8 @@ export class YeartestComponent implements OnInit {
       "score": score
     };
     console.log(JSON.stringify(data));
-    this.router.navigate(['/result', { resultData: JSON.stringify(data) }]);
+    this.router.navigate(['/result', { resultData: JSON.stringify(data) , testDetails: JSON.stringify(this.saveState) }]);
+    
   }
 
 }

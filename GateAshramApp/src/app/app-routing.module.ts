@@ -8,6 +8,9 @@ import { SubjectpracticeComponent } from './subjectpractice/subjectpractice.comp
 import { TopicpracticeComponent } from './topicpractice/topicpractice.component';
 import { YearpracticeComponent } from './yearpractice/yearpractice.component';
 import { YeartestComponent } from './yeartest/yeartest.component';
+import { ResultComponent } from './result/result.component';
+import { SubjecttestComponent } from './subjecttest/subjecttest.component';
+import { TopictestComponent } from './topictest/topictest.component';
 
 const routes: Routes = [
   {path: 'subjects/:branch', component: SubjectsComponent},
@@ -16,7 +19,10 @@ const routes: Routes = [
   {path: 'years/:branch', component: YearsComponent},
   {path: 'topicpractice', component: TopicpracticeComponent},
   {path: 'practice/:branch/:year', component: YearpracticeComponent},
-  {path: 'test/:branch/:year', component: YeartestComponent}
+  {path: 'test/:branch/:year', component: YeartestComponent},
+  {path: 'result', component: ResultComponent},
+  {path: 'test/subject/:subject', component: SubjecttestComponent},
+  {path: 'topictest', component: TopictestComponent},
 ];
 
 @NgModule({

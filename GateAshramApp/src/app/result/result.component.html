@@ -2,15 +2,38 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h2><u> Result </u></h2>
+            <h4>{{heading}}</h4>
         </div>
     </div>
+    
     <div class="row">
-        <p>{{heading}}</p>
-        <p>Total Number of questions-{{totalQuestions}}</p>
-        <p>No. of Attemped questions of 1 mark-{{totalAttemped1}}</p>
-        <p>No. of Attemped questions of 2 mark-{{totalAttemped2}}</p>
-        <p>No. of Correct questions of 1 mark-{{totalCorrect1}}</p>
-        <p>No. of Correct questions of 2 mark-{{totalCorrect2}}</p>
-        <p>Total Score-{{score}}</p>
+        
+        <table class="table table-dark">
+            <tr>
+                <td>Total Number of questions</td>
+                <td>{{totalQuestions}}</td>
+            </tr>
+            <tr>
+                <td>No. of Attemped questions of 1 mark</td>
+                <td>{{totalAttempted1}}</td>
+            </tr>
+            <tr>
+                <td>No. of Attemped questions of 2 mark</td>
+                <td>{{totalAttempted2}}</td>
+            </tr>
+            <tr>
+                <td>No. of Correct questions of 1 mark</td>
+                <td>{{totalCorrect1}}</td>
+            </tr>
+            <tr>
+                <td>No. of Correct questions of 2 mark</td>
+                <td>{{totalCorrect2}}</td>
+            </tr>
+            <tr>
+                <td>Total Score</td>
+                <td>{{score}}</td>
+            </tr>
+        </table>
+    
     </div>
 </div>

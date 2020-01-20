@@ -5,21 +5,28 @@
         </div>
     </div>
     <div class="row center-screen">
-        <form id="yearsForm" #yearsForm = "ngForm" (ngSubmit) = "onClickSubmit(yearsForm.value)">
+        <form id="yearsForm" #yearsForm="ngForm" (ngSubmit)="onClickSubmit(yearsForm.value)">
             <div class="row">
                 <div *ngFor="let year of years" class="input-group col-sm-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="radio" id="{{year}}" name="year" value="{{year}}" ngModel>
-                                <label for="{{year}}">{{"GATE " + year}}</label>
-                            </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio" id="{{year}}" name="year" value="{{year}}" ngModel>
+                            <label for="{{year}}">{{"GATE " + year}}</label>
                         </div>
                     </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-success btn-md btn-practice">Practice</button>
-                    <button routerLink="/test/CSE/2000" class="btn btn-success btn-md">Take Test</button>
+                    <input type="radio" id="Practice" name="testType" value="Practice" ngModel>
+                    <label for="Practice">{{"GATE Practice"}}</label>
+                    <input type="radio" id="Test" name="testType" value="Test" ngModel>
+                    <label for="Test">{{"GATE Test"}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" name="submit" class="btn btn-success btn-md">Submit</button>
                 </div>
             </div>
         </form>
