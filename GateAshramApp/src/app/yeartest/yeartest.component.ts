@@ -25,8 +25,8 @@ export class YeartestComponent implements OnInit {
 
   ngOnInit() {
 
-    this.year = "2001";
-    this.branch = "CSE";
+    this.year = this.route.snapshot.params.year;
+    this.branch = this.route.snapshot.params.branch;
 
     this._yeartestService.getTestQuestions(this.year, this.branch).
       subscribe((data) => {

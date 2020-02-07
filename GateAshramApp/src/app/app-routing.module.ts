@@ -19,9 +19,10 @@ const routes: Routes = [
   {path: 'years/:branch', component: YearsComponent},
   {path: 'topicpractice', component: TopicpracticeComponent},
   {path: 'practice/:branch/:year', component: YearpracticeComponent},
+  {path: 'test/subject/:subject', component: SubjecttestComponent},
   {path: 'test/:branch/:year', component: YeartestComponent},
   {path: 'result', component: ResultComponent},
-  {path: 'test/subject/:subject', component: SubjecttestComponent},
+  
   {path: 'topictest', component: TopictestComponent},
 ];
 
