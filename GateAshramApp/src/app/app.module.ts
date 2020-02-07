@@ -24,6 +24,7 @@ import { YeartestService } from './yeartest/yeartest.service';
 import { ResultComponent } from './result/result.component';
 import { SubjecttestComponent } from './subjecttest/subjecttest.component';
 import { TopictestComponent } from './topictest/topictest.component';
+import { SubjecttestService } from './subjecttest/subjecttest.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { TopictestComponent } from './topictest/topictest.component';
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService, YeartestService],
+  providers: [SubjectsService,TopicsService,SubjectpracticeService,TopicpracticeService,YearpracticeService, YeartestService,SubjecttestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
