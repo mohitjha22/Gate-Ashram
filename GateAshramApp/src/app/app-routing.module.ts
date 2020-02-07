@@ -22,7 +22,6 @@ const routes: Routes = [
   {path: 'test/subject/:subject', component: SubjecttestComponent},
   {path: 'test/:branch/:year', component: YeartestComponent},
   {path: 'result', component: ResultComponent},
-  
   {path: 'topictest', component: TopictestComponent},
 ];
 
