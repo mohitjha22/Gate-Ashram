@@ -12,7 +12,6 @@ export class TopicpracticeComponent implements OnInit {
 
   public questions = [];
   public answers = [];
-  public subject;
   public topics;
 
   constructor(
@@ -22,12 +21,11 @@ export class TopicpracticeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subject = this.route.snapshot.paramMap.get('subject');
     this.topics = JSON.parse(this.route.snapshot.paramMap.get('topics'));
     // console.log(this.subject);
-    //console.log(this.topics);
+    console.log(this.topics);
 
-    this._topicpracticeService.getTopicquestions(this.subject, this.topics)
+    this._topicpracticeService.getTopicquestions(this.topics)
       .subscribe((data) => {
         this.questions = data;
         for (let idx = 0; idx < this.questions.length; idx++) {

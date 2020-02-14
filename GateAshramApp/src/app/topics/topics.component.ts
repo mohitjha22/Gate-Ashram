@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TopicsService } from './topics.service';
-import { ActivatedRoute, Router} from '@angular/router';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-topics',
@@ -12,15 +11,13 @@ export class TopicsComponent implements OnInit {
 
   public topics = [];
   public subject;
-  public topicForm: FormGroup;
   public submitDisabled = true;
-  public formData;
+  public selectedTopics = {};
 
   constructor(
     private router: Router,
     private _topicsService: TopicsService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -29,37 +26,32 @@ export class TopicsComponent implements OnInit {
     this._topicsService.getTopics(this.subject)
       .subscribe((data) => this.topics = data);
 
-    this.topicForm = this.fb.group({
-      topics: this.fb.array([])
-    });
   }
 
-  onChange(topic: string, isChecked: boolean) {
-    const topicFormArray = <FormArray>this.topicForm.controls.topics;
-
-    if (isChecked) {
-      topicFormArray.push(new FormControl(topic));
-    } else {
-      let index = topicFormArray.controls.findIndex(x => x.value == topic)
-      topicFormArray.removeAt(index);
+  onClickSubmit(data) {
+    //console.log(data);
+    this.selectedTopics["subject"] = this.subject;
+    this.selectedTopics['topics'] = [];
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        const element = data[key];
+        if(element === true) {
+          this.selectedTopics['topics'].push([key]);
+        }
+      }
     }
-    if (topicFormArray.length > 0)
-      this.submitDisabled = false;
-    else
-      this.submitDisabled = true;
+
+    //console.log(this.selectedTopics);
+
+    if(data.testType=="Practice"){
+      this.router.navigate(["/topicpractice", { topics: JSON.stringify(this.selectedTopics) }]);
+    }
+    else if(data.testType=="Test"){
+      this.router.navigate(["/topictest", { topics: JSON.stringify(this.selectedTopics) }]);
+    }
+
+    //alert("Entered Email id : " + this.selectedYear);
   }
 
-  onSubmit1() {
-    this.formData = this.topicForm.value.topics;
-    //console.log(this.formData);
-    this.router.navigate(['/topicpractice', {subject:this.subject,topics:JSON.stringify(this.formData)}]);
-    
-  }
-  onSubmit2() {
-    this.formData = this.topicForm.value.topics;
-    //console.log(this.formData);
-    this.router.navigate(['/topictest', {subject:this.subject,topics:JSON.stringify(this.formData)}]);
-    
-  }
 
 }

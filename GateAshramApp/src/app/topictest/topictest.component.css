@@ -1,0 +1,80 @@
+#section-body {
+    width: auto;
+    height: auto;
+    border: 1px solid #eee;
+    margin: 5px;
+    background-color: white;
+}
+
+#section-test, #section-sidebar {
+    margin: 10px;
+    border: 1px solid #ccc;
+    min-height: 850px;
+}
+
+#section-test {
+    position: relative;
+}
+
+#section-sidebar {
+    max-width: 30%;
+}
+
+#section-test nav {
+    margin-top: 10px;
+}
+
+.q-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: grey;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#btn-holder {
+    margin: 10px 0;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+}
+
+.btn-mid {
+    margin-left: 10px;
+}
+
+.btn-right {
+    float: right;
+}
+
+#submit-section {
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+}
+
+#question-state {
+    list-style-type: none;
+}
+
+#question-state li {
+    display: table;
+}
+
+#question-state li p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#question-nav, #question-state-container,#student-detail,#timer-section {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+

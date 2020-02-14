@@ -10,10 +10,10 @@ export class TopicpracticeService {
 
     constructor(private http: HttpClient) {}
     
-    getTopicquestions(subject,topics): Observable<any> {
+    getTopicquestions(topics): Observable<any> {
         //console.log(topics);
         this.get_url = "http://localhost:3000/practice/subject/topics";
-        return this.http.post<any>(this.get_url, [{'subject':subject},{'topics':topics}]);
+        return this.http.post<any>(this.get_url, [{'data':topics}]);
     }
 
 }

@@ -21,6 +21,47 @@ const branchSchema = new mongoose.Schema({
 	subject:String
 });
 
+
+//to get the test questions of selected topics of a subject of a branch
+router.post('/subject/topics',function(req,res){
+
+	//async-await function
+	async function getquestions(){
+
+		const subject = req.body[0].data.subject;
+ 		const topics = req.body[0].data.topics;
+ 		//console.log(req.body[0].subject);
+		//console.log(req.body[1]);
+
+ 		//try-catch to see if the model is already made.
+ 		let Sub;
+ 		try {
+ 			Sub = mongoose.model(subject);
+ 		} catch (error) {
+ 			Sub = mongoose.model(subject,subjectSchema,subject);
+ 		}
+
+ 		const info=[];
+
+ 		//collecting all questions of the given topics from a subject
+ 		for(let i=0;i<topics.length;i++){
+ 			const topic=topics[i];
+ 			
+ 			//to query db.
+			const questions= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
+
+			for(let j=0;j<questions.length;j++){
+				info.push(questions[j]);
+			}
+
+ 		}
+
+		//console.log(info);
+		res.send(info);
+	}
+	getquestions();
+});
+
 //to get all the test questions of a year of a branch
 router.get('/:branch/:year',function(req,res){
 
@@ -109,44 +150,6 @@ router.get('/:subject',function(req,res){
 	getTestQuestionsSubjectwise();
 });
 
-//to get the test questions of selected topics of a subject of a branch
-router.post('/subject/topics',function(req,res){
 
-	//async-await function
-	async function getquestions(){
-
-		const subject = req.body[0].subject;
- 		const topics = req.body[1].topics;
- 		//console.log(req.body[0].subject);
-		//console.log(req.body[1]);
-
- 		//try-catch to see if the model is already made.
- 		let Sub;
- 		try {
- 			Sub = mongoose.model(subject);
- 		} catch (error) {
- 			Sub = mongoose.model(subject,subjectSchema,subject);
- 		}
-
- 		const info=[];
-
- 		//collecting all questions of the given topics from a subject
- 		for(let i=0;i<topics.length;i++){
- 			const topic=topics[i];
- 			
- 			//to query db.
-			const questions= await Sub.find({'Topic':topic}).sort({Gate_Year:1});
-
-			for(let j=0;j<questions.length;j++){
-				info.push(questions[j]);
-			}
-
- 		}
-
-		//console.log(info);
-		res.send(info);
-	}
-	getquestions();
-});
 
 module.exports=router;

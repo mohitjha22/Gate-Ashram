@@ -26,11 +26,12 @@ router.post('/subject/topics',function(req,res){
 
 	//async-await function
 	async function getquestions(){
+		console.log(req.body[0].data);
 
-		const subject = req.body[0].subject;
- 		const topics = req.body[1].topics;
- 		//console.log(req.body[0].subject);
-		//console.log(req.body[1]);
+		const subject = req.body[0].data.subject;
+ 		const topics = req.body[0].data.topics;
+ 		console.log(subject);
+		console.log(topics);
 
  		//try-catch to see if the model is already made.
  		let Sub;
